@@ -15,6 +15,7 @@ def update_lux():
     try:
         f = open(file_path, 'w+')
         for row in f:
+            print("for文")
             line = row
         print(line)
         if len(line) == 0:
