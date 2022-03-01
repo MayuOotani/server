@@ -25,7 +25,8 @@ def update_lux():
         #f.write(time + "," + lux)
         if int(lux) > 10:
             count += 1
-            f.write(time + "," + lux + "," + str(count))
+            
+        f.write(time + "," + lux + "," + str(count))
         return "succeeded to write"
     except Exception as e:
         print(e)
