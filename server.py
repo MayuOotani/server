@@ -18,7 +18,7 @@ def update_lux():
             print("for文")
             line = row
         print(line)
-        if len(line) == 0:
+        if line == "hoge":
             count = 0
         else:
             count = int(line.split(',')[2])
