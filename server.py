@@ -15,16 +15,15 @@ def update_lux():
     try:
         f = open(file_path, 'r')
         for row in f:
-            print("for文")
             line = row
-        print(line)
+        #print(line)
         if line == "hoge":
             count = 0
         else:
             count = int(line.split(',')[2])
         if int(lux) > 10:
             count += 1
-        print(str(count))
+        #print(str(count))
     except Exception as e:
         print(e)
     finally:
