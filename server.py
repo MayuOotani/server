@@ -25,7 +25,8 @@ def update_lux():
             count += 1
         #print(str(count))
     except Exception as e:
-        print(e)
+        f = open(file_path, 'w')
+        f.close()
     finally:
         f.close()
 
