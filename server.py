@@ -13,8 +13,18 @@ def update_lux():
     time = request.form["time"]
     lux = request.form["lux"]
     try:
-        f = open(file_path, 'w')
-        f.write(time + "," + lux)
+        f = open(file_path, 'w+')
+        for row in f:
+            line = row
+        if line == "":
+            count = 0
+        else:
+            count = int(line.split(',')[2])
+
+        #f.write(time + "," + lux)
+        if lux > 10:
+            count += 1
+            f.write(time + "," + lux + "," + str(count))
         return "succeeded to write"
     except Exception as e:
         print(e)
