@@ -29,9 +29,9 @@ def update_lux():
         print(e)
     finally:
         f.close()
-        
-    try:
 
+    try:
+        f = open(file_path, 'w')
         #f.write(time + "," + lux)
         f.write(time + "," + lux + "," + str(count))
         return "succeeded to write"
