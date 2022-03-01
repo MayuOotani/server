@@ -17,6 +17,7 @@ def update_lux():
         f = open(file_path, 'w+')
         for row in f:
             line = row
+        print(line)
         if line == "":
             count = 0
         else:
