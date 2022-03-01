@@ -2,7 +2,6 @@ from flask import Flask, request, render_template
 app = Flask(__name__)
 file_path = "./sensor_data.csv"
 port_num = 19011
-#aaaa
 
 @app.route('/', methods = ['GET'])
 def get_html():
@@ -12,11 +11,12 @@ def get_html():
 def update_lux():
     time = request.form["time"]
     lux = request.form["lux"]
-    line = ""
+    line = "hoge"
     try:
         f = open(file_path, 'w+')
         for row in f:
             line = row
+        print(line)
         if len(line) == 0:
             count = 0
         else:
@@ -25,7 +25,7 @@ def update_lux():
         #f.write(time + "," + lux)
         if int(lux) > 10:
             count += 1
-            
+        print(str(count))
         f.write(time + "," + lux + "," + str(count))
         return "succeeded to write"
     except Exception as e:
