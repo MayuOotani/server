@@ -23,8 +23,8 @@ def update_lux():
             count = int(line.split(',')[2])
 
         #f.write(time + "," + lux)
-        if int(lux) > 10:
-            count += 1
+        #if int(lux) > 10:
+            #count += 1
             
         f.write(time + "," + lux + "," + str(count))
         return "succeeded to write"
