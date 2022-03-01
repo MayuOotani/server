@@ -13,7 +13,7 @@ def update_lux():
     lux = request.form["lux"]
     line = "hoge"
     try:
-        f = open(file_path, 'w+')
+        f = open(file_path, 'r')
         for row in f:
             print("for文")
             line = row
@@ -22,11 +22,17 @@ def update_lux():
             count = 0
         else:
             count = int(line.split(',')[2])
-
-        #f.write(time + "," + lux)
         if int(lux) > 10:
             count += 1
         print(str(count))
+    except Exception as e:
+        print(e)
+    finally:
+        f.close()
+        
+    try:
+
+        #f.write(time + "," + lux)
         f.write(time + "," + lux + "," + str(count))
         return "succeeded to write"
     except Exception as e:
