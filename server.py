@@ -17,10 +17,12 @@ def update_lux():
         for row in f:
             line = row
         #print(line)
-        if line == "hoge":
+        date_log = line.split(',')
+        date_now = time.split(',')
+        if line == "hoge" or date_log[0] != date_now[0]:
             count = 0
         else:
-            count = int(line.split(',')[2])
+            count = int(line.split(',')[3])
         if int(lux) > 10:
             count += 1
         #print(str(count))
