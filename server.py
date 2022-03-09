@@ -1,4 +1,3 @@
-from itertools import count
 from flask import Flask, request, render_template
 app = Flask(__name__)
 file_path = "./sensor_data.csv"
@@ -28,7 +27,7 @@ def update_lux():
             counter = int(log[4])
         if int(lux) > 10:
             second += 1
-            if int(log[2]) <= 10:
+            if int(log[2]) <= 10 or counter == 0:
                 counter += 1
     except Exception as e:
         f = open(file_path, 'w')

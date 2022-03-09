@@ -7,7 +7,7 @@
                 const sensorData = await fetch(url)
                 .then(response => response.text())
                 const time = Number(sensorData.split(',')[3])
-                const count = SensorData.split(',')[4]
+                const count = sensorData.split(',')[4]
                 const target = document.getElementById(element)
                 target.innerHTML = `<h1>${count}回(${parseInt(time/60)}分${time%60}秒間)</h1>`
             }
