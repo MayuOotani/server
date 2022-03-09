@@ -1,3 +1,4 @@
+from itertools import count
 from flask import Flask, request, render_template
 app = Flask(__name__)
 file_path = "./sensor_data.csv"
@@ -17,15 +18,18 @@ def update_lux():
         for row in f:
             line = row
         #print(line)
-        date_log = line.split(',')
-        date_now = time.split(',')
-        if line == "hoge" or date_log[0] != date_now[0]:
-            count = 0
+        log = line.split(',')
+        today = time.split(',')[0]
+        if line == "hoge" or log[0] != today:
+            second = 0
+            counter = 0
         else:
-            count = int(line.split(',')[3])
+            second = int(log[3])
+            counter = int(log[4])
         if int(lux) > 10:
-            count += 1
-        #print(str(count))
+            second += 1
+            if int(log[2]) <= 10:
+                counter += 1
     except Exception as e:
         f = open(file_path, 'w')
         f.close()
@@ -35,7 +39,7 @@ def update_lux():
     try:
         f = open(file_path, 'w')
         #f.write(time + "," + lux)
-        f.write(time + "," + lux + "," + str(count))
+        f.write(time + "," + lux + "," + str(second) + "," + str(counter))
         return "succeeded to write"
     except Exception as e:
         print(e)
